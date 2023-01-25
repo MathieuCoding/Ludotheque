@@ -1,24 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GameController!{% endblock %}
+{% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
 
-<h1 class="text-center mt-5 mb-5">Game list</h1>
+<h1 class="text-center mt-5 mb-5">My Game Collection</h1>
     <div class="container">
         <div class="row">
-            {% for game in games %}    
+            {% for game in user.games %}    
                 <div class="card col-12 col-md-6 col-lg-3 ms-3 ">     
                      <div class="card-body">
-                     <img src="uploads/{{ game.picture }}" alt="{{ game.title }}" class="card-img-top">
+                     <img src="{{ asset('uploads/' ~ game.picture) }}" alt="{{ game.title }}" class="card-img-top">
                         <h5 class="card-title mt-3">{{ game.title }}</h5>
                         {# <p class="card-text">{{ game.description }}</p> #}
                         <div class="d-flex flex-column justify-content-end ">
-                            <a href="{{ path('app_show_game', {id: game.id}) }}" class="btn btn-success mx-auto d-block mt-5">Tell me more !</a>
-                            <a href="#" class="btn btn-primary mx-auto d-block mt-3">Add to my collection</a>
+                            <a href="{{ path('app_show_game', {id: game.id}) }}" class="btn btn-success mx-auto d-block mt-5">More infos</a>
                         </div>
                     </div>
                 </div>              
         {% endfor %}
     </div>
+
 {% endblock %}
+
+
